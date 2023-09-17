@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Start link class to table in database
+"""
+Write a script that adds the State object
+“Louisiana” to the database hbtn_0e_6_usa
 """
 import sys
 from model_state import Base, State
