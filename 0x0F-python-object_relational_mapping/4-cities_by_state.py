@@ -16,14 +16,9 @@ if __name__ == "__main__":
         host=db_host, user=db_user, passwd=db_password, db=db_name, port=port
     )
     cursor = db.cursor()
-
-    cursor.execute("SELECT cities.id, cities.name, states.name FROM cities \
-    JOIN states ON states.id = cities.state_id \
-    ORDER BY cities.id")
-    rows = cursor.fetchall()
-
-    for row in rows:
-        print(row)
-
-    cursor.close()
-    db.close()
+    cursor.execute("SELECT `c`.`id`, `c`.`name`, `s`.`name` \
+                 FROM `cities` as `c` \
+                INNER JOIN `states` as `s` \
+                   ON `c`.`state_id` = `s`.`id` \
+                ORDER BY `c`.`id`")
+    [print(city) for city in cursor.fetchall()]
