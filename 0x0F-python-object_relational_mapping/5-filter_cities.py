@@ -21,13 +21,8 @@ if __name__ == "__main__":
         host=db_host, user=db_user, passwd=db_password, db=db_name, port=port
     )
     cursor = db.cursor()
-
-    cursor.execute(query, params)
-    rows = cursor.fetchall()
-    tuples = ()
-    for row in rows:
-        tuples += row
-    print(*tuples, sep=", ")
-
-    cursor.close()
-    db.close()
+    cursor.execute("SELECT * FROM `cities` as `c` \
+                INNER JOIN `states` as `s` \
+                   ON `c`.`state_id` = `s`.`id` \
+                ORDER BY `c`.`id`")
+    print(", ".join([ct[2] for ct in cursor.fetchall() if ct[4] == sys.argv[4]]))
