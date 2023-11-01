@@ -1,7 +1,4 @@
-$(document).ready(function () {
-  $.get('https://swapi-api.alx-tools.com/api/films/?format=json', function (data) {
-    $.each(data.results, function (i, movie) {
-      $('<li>').text(movie.title).appendTo('ul#list_movies');
-    });
-  });
+// Jquery API to get title of stat wars movies from a url
+$.get('https://swapi-api.alx-tools.com/api/films/?format=json', function (data) {
+  $('UL#list_movies').append(data.results.map(movie => `<li>${movie.title}</li>`));
 });
