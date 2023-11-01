@@ -1,22 +1,11 @@
-// Wait for the DOM to be ready
-$(document).ready(function () {
-  // Add a click event listener to DIV#add_item
-  $('#add_item').click(function () {
-    // Create a new LI element
-    const newItem = $('<li>Item</li>');
-    // Add it to UL.my_list
-    $('UL.my_list').append(newItem);
+$('document').ready(function () {
+  $('DIV#add_item').click(function () {
+    $('UL.my_list').append('<li>Item</li>');
   });
-
-  // Add a click event listener to DIV#remove_item
-  $('#remove_item').click(function () {
-    // Remove the last LI element from UL.my_list
-    $('UL.my_list LI:last-child').remove();
+  $('DIV#remove_item').click(function () {
+    $('UL.my_list li:last').remove();
   });
-
-  // Add a click event listener to DIV#clear_list
-  $('#clear_list').click(function () {
-    // Remove all LI elements from UL.my_list
-    $('UL.my_list LI').remove();
+  $('DIV#clear_list').click(function () {
+    $('UL.my_list').empty();
   });
 });
